@@ -19,7 +19,9 @@ const injectContext = PassedComponent => {
 						actions: { ...state.actions }
 					})
 			})
-		);
+		);					
+		
+		console.log("Context state updated:", state.store); // Add this line
 
 		useEffect(() => {
 			/**
@@ -31,7 +33,9 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
-			state.actions.getAllContactsAction();
+
+			state.actions.getAllCategoryAction();
+			state.actions.getFavourites();
 
 		}, []);
 

@@ -1,4 +1,4 @@
-const BASE_URL = "https://playground.4geeks.com/apis/fake/contact/"
+export const BASE_URL = "https://swapi.dev/api/"
 
 const sendAPI = async (method, contentType, body, addToUri) => {
 
@@ -20,7 +20,6 @@ const sendAPI = async (method, contentType, body, addToUri) => {
         if (method !== "GET" && body !== undefined && body !== null) {
             console.log('setting body..');
             fetchOptions.body = JSON.stringify(body);
-           
         }
 
         const response = await fetch(url, fetchOptions);
@@ -37,26 +36,18 @@ const sendAPI = async (method, contentType, body, addToUri) => {
     }
 }
 
-export const getAllContacts = async (agendaSlug) => {
-    return sendAPI("GET", "application/json", null, "agenda/" + agendaSlug);
+export const getAllCategory = async (nameOfCategory) => {
+    return sendAPI("GET", "application/json", null, nameOfCategory);
 }
 
-export const getContact = async (contactId) => {
-    return sendAPI("GET", "application/json", null, contactId);
+export const getCategory = async (nameOfCategory, id) => {
+    return sendAPI("GET", "application/json", null, nameOfCategory + "/" + id);
 }
 
-export const createContact = async (contactInfo) => {
-    return sendAPI("POST", "application/json", contactInfo);
+export const getCategoryItem = async (id) => {
+    return sendAPI("GET", "application/json", null, id)
 }
 
-export const updateContact = async (contactInfo, contactId) => {
-    return sendAPI("PUT", "application/json", contactInfo, contactId);
-}
 
-export const deleteContact = async (contactId) => {
-    return sendAPI("DELETE", "application/json", null, contactId);
-}
 
-export const deleteContacts = async (agendaSlug) => {
-    return sendAPI("DELETE", "application/json", null), agendaSlug;
-}
+
